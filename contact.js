@@ -12,5 +12,17 @@
 		});
 		
 		let result = await response.json();
-		alert(result.message);
+		
+		let msg = document.createElement('div')
+		f.append(msg)
+		
+		if(result) {
+		    msg.style.color = 'green';
+		    msg.innerText = 'Сообщение отправлено';
+		} else {
+		    msg.style.color = 'red';
+		    msg.innerText = 'Ошибка при отправке';
+		};
+		
+		setTimeout(() => msg.remove(), 2000);
 	}
