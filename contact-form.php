@@ -1,28 +1,32 @@
 <?php
-
-/* Задаем переменные */
-$name = htmlspecialchars($_POST["name"]);
-$email = htmlspecialchars($_POST["email"]);
+$name = htmlspecialchars($_POST["serial"]);
+$email = htmlspecialchars($_POST["address"]);
 $message = htmlspecialchars($_POST["message"]);
+$nospam = htmlspecialchars($_POST["name"]);
+$noemail = htmlspecialchars($_POST["email"]);
 
-/* Ваш адрес и тема сообщения */
+/* Your email & subject message */
 $address = "akmid81@gmail.com";
-$sub = "Сообщение с сайта";
+$sub = "Email subject";
 
-/* Формат письма */
-$mes = "Сообщение с сайта для проверки формы.\n
-Имя отправителя: $name 
-Электронный адрес отправителя: $email
-Текст сообщения:
-$message";
-
+/* Message */
+$mes = "Message from site.com.\n
+Users name: $name 
+Users email: $email
+Message: $message";
 
 
+if (empty($nospam) && ($noemail == "a@b.c")) {
 	$from  = "From: $name <$email> \r\n Reply-To: $email \r\n";
+	
 	if (mail($address, $sub, $mes, $from)) {
-		echo json_encode(true);
+		echo json_encode(1);
 	} else {
-		echo json_encode(false);
+		echo json_encode(0);
 	};
+} else {
+    echo json_encode(0);
+};
 
+exit;
 ?>
