@@ -6,7 +6,7 @@ $nospam = htmlspecialchars($_POST["name"]);
 $noemail = htmlspecialchars($_POST["email"]);
 
 /* Your email & subject message */
-$address = "akmid81@gmail.com";
+$address = "youemail@gmail.com";
 $sub = "Email subject";
 
 /* Message */
